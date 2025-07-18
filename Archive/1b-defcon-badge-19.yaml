@@ -1,0 +1,91 @@
+esphome:
+  name: 1b-defcon-badge-19
+  friendly_name: 1B DefCon Badge 19
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "KEcmL6PLGBjO6itULVvtlAFU3NUcB3s7egyAWIC3YOU="
+  actions:
+    - action: rtttl_play
+      variables:
+        song_str: string
+      then:
+        - rtttl.play:
+            rtttl: !lambda 'return song_str;'
+
+ota:
+  - platform: esphome
+    password: "27be0efb62bbf7628ec353b4960a136a"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "1B-Defcon-Badge-19"
+    password: "firstbuild"
+
+captive_portal:
+
+output:
+  - platform: gpio
+    pin: GPIO5
+    id: led_output_lightning
+
+  - platform: gpio
+    pin: GPIO3
+    id: led_output_window
+
+  - platform: ledc
+    pin: GPIO4
+    id: buzzer_out
+
+light:
+  - platform: binary
+    name: "Lightning LEDs"
+    output: led_output_lightning
+
+  - platform: binary
+    name: "Window LED"
+    output: led_output_window
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO8
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Button"
+    filters:
+      - delayed_on: 50ms
+      - delayed_off: 50ms
+    on_press:
+      - output.turn_on: led_output_lightning
+    on_release:
+      - output.turn_off: led_output_lightning
+
+rtttl:
+  output: buzzer_out
+
+switch:
+  - platform: template
+    name: "Ring"
+    turn_on_action:
+      - rtttl.play: "RingBadge:d=8,o=5,b=500:c#,f,c#,f,c#,f,c#,f,c#,f,c#,f,4p.,c#,f,c#,f,c#,f,c#,f,c#,f"
+
+  - platform: template
+    name: "Triple Ring"
+    turn_on_action:
+      - rtttl.play: "TripleRing:d=8,o=5,b=635:c,e,g,c,e,g,c,e,g,c6,e6,g6,c6,e6,g6,c6,e6,g6,c7,e7,g7,c7,e7,g7,c7,e7,g7"
+
+  - platform: template
+    name: "Retro Game"
+    turn_on_action:
+      - rtttl.play: "smb:d=4,o=5,b=100:16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,8p,16d#6,8p,16d6,8p,16c6"

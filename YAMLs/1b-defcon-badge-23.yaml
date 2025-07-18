@@ -1,0 +1,159 @@
+esphome:
+  name: 1b-defcon-badge-23
+  friendly_name: 1B DefCon Badge 23
+
+esp32:
+  board: seeed_xiao_esp32c3
+  variant: esp32c3
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "egIWS5zw8AhFqK2kVaLAh1L/A98IrTvwuo3RzPVAlMQ="
+  actions:
+    - action: rtttl_play
+      variables:
+        song_str: string
+      then:
+        - rtttl.play:
+            rtttl: !lambda 'return song_str;'
+
+ota:
+  - platform: esphome
+    password: "27be0efb62bbf7628ec353b4960a136a"
+
+wifi:
+  networks:
+  - ssid: DefCon-Open
+    password: ""
+  - ssid: 1B DefCon
+    password: firstbuild
+    
+# wifi:
+#   ssid: !secret defcon_ssid
+#   password: !secret defcon_password
+
+  ap:
+    ssid: "1B-Defcon-Badge-23"
+    password: "firstbuild"
+
+captive_portal:
+
+output:
+  - platform: gpio
+    pin: GPIO5
+    id: led_output_lightning
+
+  - platform: gpio
+    pin: GPIO3
+    id: led_output_window
+
+  - platform: ledc
+    pin: GPIO4
+    id: buzzer_out
+
+light:
+  - platform: binary
+    name: "Lightning LEDs"
+    output: led_output_lightning
+
+  - platform: binary
+    name: "Window LED"
+    output: led_output_window
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO8
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Red Button"
+    filters:
+      - delayed_on: 50ms
+      - delayed_off: 50ms
+    on_press:
+      - output.turn_on: led_output_lightning
+      - rtttl.play: "Zap:d=32,o=7,b=330:c7, p, d#7, f#7, p, g7, d#7, p, g#7, a7, p, e7, b6, c7, p, g6, p, c7"
+    on_release:
+      - output.turn_off: led_output_lightning
+
+  - platform: gpio
+    pin:
+      number: GPIO9
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Rear Button"
+    filters:
+      - delayed_on: 50ms
+      - delayed_off: 50ms
+    on_press:
+      - output.turn_on: led_output_lightning
+      - rtttl.play: "microzap:d=32,o=7,b=250:b7, p, f#7, p, d#7"
+    on_release:
+      - output.turn_off: led_output_lightning
+
+sensor:
+  - platform: adc
+    pin: GPIO2
+    name: "Battery Voltage"
+    update_interval: 30s
+    filters:
+      - multiply: 2.0
+    unit_of_measurement: "V"
+
+rtttl:
+  output: buzzer_out
+
+switch:
+  - platform: template
+    name: "Ring - Ring"
+    turn_on_action:
+      - rtttl.play: "RingBadge:d=8,o=5,b=500:c#,f,c#,f,c#,f,c#,f,c#,f,c#,f,4p.,c#,f,c#,f,c#,f,c#,f,c#,f"
+
+  - platform: template
+    name: "Ring - Triple"
+    turn_on_action:
+      - rtttl.play: "TripleRing:d=8,o=5,b=1000:c,e,g,c,e,g,c,e,g,c6,e6,g6,c6,e6,g6,c6,e6,g6,c7,e7,g7,c7,e7,g7,c7,e7,g7"
+
+  - platform: template
+    name: "Ring - Game"
+    turn_on_action:
+      - rtttl.play: "Game:d=4,o=5,b=200:16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,8p,16d#6,8p,16d6,8p,16c6"
+
+  - platform: template
+    name: "Ring - Pac Person"
+    turn_on_action:
+      - rtttl.play: "Pac Person:d=4,o=5,b=112:32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32c6,32p,32c7,32p,32g6,32p,32e6,32p,32c7,32g6,16p,16e6,16p,32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32d#6,32e6,32f6,32p,32f6,32f#6,32g6,32p,32g6,32g#6,32a6,32p,32b.6"
+
+  # - platform: template
+  #   name: "Ring - Jingle Bells"
+  #   turn_on_action:
+  #     - rtttl.play: "Jingle Bells:o=5,d=4,b=170,b=170:b,b,b,p,b,b,b,p,b,d6,g.,8a,2b.,8p,c6,c6,c6.,8c6,c6,b,b,8b,8b,b,a,a,b,2a,2d6"
+
+  # - platform: template
+  #   name: "Ring - Secret Agent"
+  #   turn_on_action:
+  #     - rtttl.play: "Secret Agent:o=5,d=4,b=320,b=320:c,8d,8d,d,2d,c,c,c,c,8d#,8d#,2d#,d,d,d,c,8d,8d,d,2d,c,c,c,c,8d#,8d#,d#,2d#,d,c#,c,c6,1b.,g,f,1g."
+  
+  # - platform: template
+  #   name: "Ring - Mozart"
+  #   turn_on_action:
+  #     - rtttl.play: "Mozart:o=5,d=16,b=125,b=125:16d#,c#,c,c#,8e,8p,f#,e,d#,e,8g#,8p,a,g#,g,g#,d#6,c#6,c6,c#6,d#6,c#6,c6,c#6,4e6,8c#6,8e6,32b,32c#6,d#6,8c#6,8b,8c#6,32b,32c#6,d#6,8c#6,8b,8c#6,32b,32c#6,d#6,8c#6,8b,8a#,4g#,d#,32c#,c,c#,8e,8p,f#,e,d#,e,8g#,8p,a,g#,g,g#,d#6,c#6,c6,c#6,d#6,c#6,c6,c#6,4e6,8c#6,8e6,32b,32c#6,d#6,8c#6,8b,8c#6,32b,32c#6,d#6,8c#6,8b,8c#6,32b,32c#6,d#6,8c#6,8b,8a#,4g#"
+
+  # - platform: template
+  #   name: "Ring - High"
+  #   turn_on_action:
+  #     - rtttl.play: "Ring High:o=6,d=16,b=350,b=350:b5,d,b5,d,b5,d,b5,d,d,f,d,f,d,f,d,f,f,a,f,a,f,a,f,a."
+
+  # - platform: template
+  #   name: "Ring - Low"
+  #   turn_on_action:
+  #     - rtttl.play: Ring Low:o=5,d=16,b=355,b=355:b4,d,b4,d,b4,d,b4,d,d,f,d,f,d,f,d,f,f,a,f,a,f,a,f,a"
+  
+  # - platform: template
+  #   name: "Ring - Bring"
+  #   turn_on_action:
+  #     - rtttl.play: "Bring:o=5,d=16,b=350,b=350:a,b,a,b,a,b,a,4p,a,b,a,b,a,b,a,b,a."
