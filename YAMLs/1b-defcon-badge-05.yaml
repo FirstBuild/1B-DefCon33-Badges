@@ -76,7 +76,7 @@ binary_sensor:
       - delayed_off: 50ms
     on_press:
       - output.turn_on: led_output_lightning
-      - rtttl.play: "Zap:d=32,o=7,b=330:c7, p, d#7, f#7, p, g7, d#7, p, g#7, a7, p, e7, b6, c7, p, g6, p, c7"
+      - rtttl.play: "Happy:d=4,o=5,b=500:c6,e6,g6,c7,g6,e6,c6"
     on_release:
       - output.turn_off: led_output_lightning
 
@@ -97,11 +97,13 @@ binary_sensor:
 
 sensor:
   - platform: adc
+    attenuation: auto
+    accuracy_decimals: 1
     pin: GPIO2
     name: "Battery Voltage"
-    update_interval: 30s
+    update_interval: 60s
     filters:
-      - multiply: 2.0
+      - multiply: 4.7
     unit_of_measurement: "V"
 
 rtttl:
