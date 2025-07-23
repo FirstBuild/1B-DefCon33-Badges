@@ -62,7 +62,7 @@ After clicking Add Integration, search for ESPHome and click it.
 Then, enter the IP Address of your badge and click Submit. If you need help finding your IP address, ask Bobby or Tim.
 
 <p align="center">
-  <img alt="Example of entering your badge IP addres" src="Resources/AddIPAddress.png" style="width: 50%;"/>
+  <img alt="Example of entering your badge IP addres" src="Resources/AddIpAddress.png" style="width: 50%;"/>
 </p>
 
 Next, you should see a screen with the name of your badge. Select Badges for the area name and click Finish.
