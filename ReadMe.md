@@ -4,12 +4,21 @@
   <img alt="Rendering of FirstBuild DefCon33 Badge" src="Resources/Badge.png" style="width: 100%;"/>
 </p>
 
-### Link to Badge GitHub Repo:
+### Link to Badge GitHub Repo
 <p align="center">
   <img alt="QR Code Link To Badge Github Repo" src="Resources/Badge_Github_Link_QRCode.png" style="width: 50%;"/>
   </br>
   Link To FirstBuild DefCon33 Badge GitHub Repo
 </p>
+
+### Claiming a Badge
+<!-- <p align="center">
+  <img alt="QR Code Link To Badge Claim Form" src="Resources/Badge_Claim_Form_Link_QRCode.png" style="width: 50%;"/>
+  </br>
+  Link To FirstBuild DefCon33 Badge Claim Form
+</p> -->
+
+In order to claim a badge, you have to start by filling out our Badge Claim Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge!
 
 ### Schematic
 You can find the [schematic for the FirstBuild Defcon33 Badge](https://github.com/FirstBuild/1B-DefCon33-Badges/Resources/BadgeSchematic.pdf) in the Resources folder. 
@@ -20,10 +29,10 @@ If starting from scratch, create an initial YAML called `1b-defcon-badge-00.yaml
 ### Compiling and Uploading
 In order to compile and upload badge firmware using the scripts included in this repo, you will need to have the ESPHome CLI installed. Follow [this guide](https://esphome.io/guides/installing_esphome.html) for instructions. 
 
-Once you have generated the YAMLs, you can compile the badge firmware by navigating to the YAMLs folder and running `../Compile.sh 00 99`, where `00` is the first badge you want to compile and `99` is the last badge you want to compile. To upload, simply run `../Upload.sh 00 99` to upload the same range of YAMLs. 
+Once you have generated the YAMLs, you can compile the badge firmware by running `./Compile.sh 00 99`, where `00` is the first badge you want to compile and `99` is the last badge you want to compile. To upload, simply run `./Upload.sh 00 99` to upload the same range of YAMLs. 
 
-### Adding to HomeAssistant
-In order to add your badge to the FirstBuild Defcon33 Home Assistant Instance, first connect to the designated WiFi network (either the LVCC WiFi or our local SSID `1B DefCon`). Then navigate to [homeassistant-1b-defcon-1.local](http://homeassistant-1b-defcon-1.local/) to access our Home Assistant instance. The login uses `firstbuild` for both the username and password. 
+### Adding Your Badge to HomeAssistant
+In order to add your badge to the FirstBuild Defcon33 Home Assistant Instance, first connect to the designated WiFi network (either the LVCC WiFi or our local SSID `1B DefCon`). Then navigate to [homeassistant-1b-defcon-1.local:8123](http://homeassistant-1b-defcon-1.local:8123/) to access our Home Assistant instance. The login uses `firstbuild` for both the username and password. 
 
 Once in Home Assistant, go to ESPHome Builder in the left side navigation bar. Then find your badge number and click Edit. If the badge shows offline, make sure the power switch is in the ON position. You should hear a tune when you press the red button, if the badge is powered on. If it still shows offline, or if you have not had a badge assigned to you, see Bobby or Tim at the GE Appliances/FirstBuild area in the IoT Village. 
 
@@ -90,6 +99,8 @@ On the next screen, select "Badges" in the Area dropdown and click Finish.
 </p> -->
 
 Once you've added your badge, you should be able to see it in the Dashboard. From there, you can begin interacting with your badge and our appliances in HomeAssistant. Be sure to show anything that you build to Bobby or Tim.
+
+
 
 ### After the Con
 After the Con, you can come back here and modify the YAML for your badge to make it connect to your WiFi network and HomeAssistant instance. 

@@ -33,6 +33,8 @@ for filename in YAMLs/1b-defcon-badge-*.yaml; do
 
   # Check if the number part is a valid integer
   if [[ "$num_part" =~ ^[0-9]+$ ]]; then
+    start_num=$((10#$start_num))
+    end_num=$((10#$end_num))
     if (( num_part >= start_num && num_part <= end_num )); then
       echo "Uploading File: ${filename}"
       read -p "Press Enter to flash ${filename} to the device..."
