@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for filename in *.yaml; do
+for filename in YAMLs/1b-defcon-badge-*.yaml; do
   if [[ -f "$filename" ]]; then
     echo "Processing file: $filename"
     esphome compile "$filename"

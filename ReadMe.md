@@ -18,7 +18,7 @@
   Link To FirstBuild DefCon33 Badge Claim Form
 </p> -->
 
-In order to claim a badge, you have to start by filling out our Badge Claim Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge!
+In order to claim a badge, you have to start by filling out our Badge Signup Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge!
 
 ### Schematic
 You can find the [schematic for the FirstBuild Defcon33 Badge](https://github.com/FirstBuild/1B-DefCon33-Badges/Resources/BadgeSchematic.pdf) in the Resources folder. 
