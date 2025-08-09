@@ -12,13 +12,9 @@
 </p>
 
 ### Claiming a Badge
-<!-- <p align="center">
-  <img alt="QR Code Link To Badge Claim Form" src="Resources/Badge_Claim_Form_Link_QRCode.png" style="width: 50%;"/>
-  </br>
-  Link To FirstBuild DefCon33 Badge Claim Form
-</p> -->
+In order to claim a badge at DefCon33, you need to send an e-mail to Bobby@FirstBuild.com with your idea for how you would use your GE Appliances in Home Assistant. Once you've sent the e-mail, let Bobby or Tim know and we'll talk through your idea and grab your badge.
 
-In order to claim a badge, you have to start by filling out our Badge Signup Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge!
+<!-- In order to claim a badge, you have to start by filling out our Badge Signup Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge! -->
 
 ### Schematic
 You can find the [schematic for the FirstBuild Defcon33 Badge](https://github.com/FirstBuild/1B-DefCon33-Badges/Resources/BadgeSchematic.pdf) in the Resources folder. 
@@ -99,8 +95,6 @@ On the next screen, select "Badges" in the Area dropdown and click Finish.
 </p> -->
 
 Once you've added your badge, you should be able to see it in the Dashboard. From there, you can begin interacting with your badge and our appliances in HomeAssistant. Be sure to show anything that you build to Bobby or Tim.
-
-
 
 ### After the Con
 After the Con, you can come back here and modify the YAML for your badge to make it connect to your WiFi network and HomeAssistant instance. 
