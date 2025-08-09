@@ -12,7 +12,13 @@
 </p>
 
 ### Claiming a Badge
-In order to claim a badge at DefCon33, you need to send an e-mail to Bobby@FirstBuild.com with your idea for how you would use your GE Appliances in Home Assistant. Once you've sent the e-mail, let Bobby or Tim know and we'll talk through your idea and grab your badge.
+In order to claim a badge at DefCon33, you need to send an e-mail to Bobby@FirstBuild.com with your idea for how you would use your GE Appliances in Home Assistant. Once you've sent the e-mail, let Bobby or Tim know and we'll talk through your idea and grab your badge. Here's a QR code to make a little easier.
+
+<p align="center">
+  <img alt="QR Code Link To Email Idea Submission" src="Resources/DefCon33EmailQRCode.png" style="width: 50%;"/>
+  </br>
+  Link To Email Idea Submission
+</p>
 
 <!-- In order to claim a badge, you have to start by filling out our Badge Signup Form. Once you've filled out the form, it's time to go on a quest. Use one of our appliances to create a cool automation or something useful in Home Assistant. If you want to use your badge as part of the thing you're building, let us know and we'll help you out. Once you've created something, show Bobby or Tim and we'll award you your very own badge! -->
 
@@ -27,7 +33,7 @@ In order to compile and upload badge firmware using the scripts included in this
 
 Once you have generated the YAMLs, you can compile the badge firmware by running `./Compile.sh 00 99`, where `00` is the first badge you want to compile and `99` is the last badge you want to compile. To upload, simply run `./Upload.sh 00 99` to upload the same range of YAMLs. 
 
-### Adding Your Badge to HomeAssistant
+<!-- ### Adding Your Badge to HomeAssistant
 In order to add your badge to the FirstBuild Defcon33 Home Assistant Instance, first connect to the designated WiFi network (either the LVCC WiFi or our local SSID `1B DefCon`). Then navigate to [homeassistant-1b-defcon-1.local:8123](http://homeassistant-1b-defcon-1.local:8123/) to access our Home Assistant instance. The login uses `firstbuild` for both the username and password. 
 
 Once in Home Assistant, go to ESPHome Builder in the left side navigation bar. Then find your badge number and click Edit. If the badge shows offline, make sure the power switch is in the ON position. You should hear a tune when you press the red button, if the badge is powered on. If it still shows offline, or if you have not had a badge assigned to you, see Bobby or Tim at the GE Appliances/FirstBuild area in the IoT Village. 
@@ -94,18 +100,22 @@ On the next screen, select "Badges" in the Area dropdown and click Finish.
   <img alt="Example of ESPHome Device Created Screen" src="Resources/DeviceCreated.png" style="width: 50%;"/>
 </p> -->
 
-Once you've added your badge, you should be able to see it in the Dashboard. From there, you can begin interacting with your badge and our appliances in HomeAssistant. Be sure to show anything that you build to Bobby or Tim.
+Once you've added your badge, you should be able to see it in the Dashboard. From there, you can begin interacting with your badge and our appliances in HomeAssistant. Be sure to show anything that you build to Bobby or Tim. -->
 
 ### After the Con
 After the Con, you can come back here and modify the YAML for your badge to make it connect to your WiFi network and HomeAssistant instance. 
 
-Also, don't forget about that other board that came with your badge! It allows you to use the Xiao ESP32-C3 microcontroller that was included with your badge to connect your GE Appliances device to your HomeAssistant instance. Check out [the repo for the HomeAssistant Adapter](https://github.com/geappliances/home-assistant-adapter) to program it. 
+Also, don't forget about that other board that came with your badge! It allows you to use the Xiao ESP32-C3 microcontroller that was included with your badge to connect your GE Appliances device to your HomeAssistant instance. Check out [the repo for the HomeAssistant Adapter](https://github.com/geappliances/home-assistant-adapter) to program it. There are also schematics and even a case that you can 3D print.
 
 <p align="center">
   <img alt="QR Code Link To HomeAssistant Adapter Github Repo" src="Resources/HA_Adapter_Github_Link_QRCode.png" style="width: 50%;"/>
   </br>
   Link To HomeAssistant Adapter GitHub Repo
 </p>
+
+Want more info on the data that you may get from your Home Assistant Adapter, check out the GE Appliances GitHub account. Specifically take a look at [this repo](https://github.com/geappliances/public-appliance-api-documentation).
+
+Interested in writing your own firmware to do something cool with the Home Assistant adapter? You'll want to take a look at the [Arduino GEA3 Library](https://github.com/geappliances/arduino-gea3) and the [Arduino GEA2 Library](https://github.com/geappliances/arduino-gea2).
 
 Want to use your badge and your HomeAssistant adapter at the same time? You'll just need to [buy another Xiao ESP32-C3 board](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html) so you can run both.
 
